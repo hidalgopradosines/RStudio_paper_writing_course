@@ -3,7 +3,7 @@ title: "New paper template"
 subtitle: |
   \raggedright  Author 1^1,2,\*^ , Author 2^1,2^, Author 3^3^, Author 4E^4^ \newline<br>^1^Heidelberg University, Centre for Organismal Studies (COS), 69120 Heidelberg, Germany \newline<br>^2^Affiliation 2 \newline<br>^3^Affiliation 3 \newline<br>^4^Affiliation 4\newline<br>  ^\*^Correspondence: xy@cos.uni-heidelberg.de
 mainfont: Arial
-monofont: DejaVu Sans Mono #Times New Roman
+monofont: Times New Roman
 fontsize: 11pt
 linestretch: 1.2
 linkcolor: blue
@@ -28,13 +28,14 @@ format:
         \usepackage{lineno}
     include-before-body:
       text: |
-        \linenumbers
+        \linenumbers 
+#If i delete from "include before body:" on, I do not get the                        line numbers in the pdf 
 bibliography: references.bib #add bibliography in this file
 csl: elife.csl #change according to journal
 ---
 
 ```{r include=FALSE}
-source("../analysis/scripts/statistics_for_paper.R")
+source("../analysis/scripts/statistics_for_paper.R") ##../ means that we go up one folder in the directory path
 
 ```
 
@@ -94,7 +95,8 @@ knitr::include_graphics("figures/Figure1.png")
 ```
 
 ```{r, out.width = "100%", fig.cap="**Figure 1. Our nice figure from yesterday** (A) A nice picture. (B) legend.  (C) <br> (D) " }
-#| echo: false 
+#| echo: false #the code is not going to be displayed in the final document; if we set it to true, the code is shown
+#| #To also hide the warnings we use warning: false
 
 knitr::include_graphics("figures/Figure_complex.png")
 ```
@@ -105,11 +107,7 @@ Equations can also be inserted, Insert -\> Display Math:
 
 $$
 \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{n}
-$$
-
-\
-
-## Sourcing code and working with variable
+$$  this includes a new line \## Sourcing code and working with variable
 
 ```{r}
 #| include: false
